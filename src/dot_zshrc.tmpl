@@ -171,12 +171,10 @@ source {{ .chezmoi.homeDir }}/.aliases.zsh
 
 {{ if and .is_personal .is_wsl -}}
 
-# Google Cloud SDK
-if [ -f "{{ .chezmoi.homeDir }}/opt/google-cloud-sdk/path.zsh.inc" ]; then . "{{ .chezmoi.homeDir }}/opt/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "{{ .chezmoi.homeDir }}/opt/google-cloud-sdk/completion.zsh.inc" ]; then . "{{ .chezmoi.homeDir }}/opt/google-cloud-sdk/completion.zsh.inc"; fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/timo/google-cloud-sdk/path.zsh.inc' ]; then . '/home/timo/google-cloud-sdk/path.zsh.inc'; fi
 
-# Google Cloud SDK if installed through brew
-if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then . "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"; fi
-if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then . "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/timo/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/timo/google-cloud-sdk/completion.zsh.inc'; fi
 
 {{- end }}
